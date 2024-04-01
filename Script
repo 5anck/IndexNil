@@ -137,8 +137,8 @@ plr:GetMouse().KeyDown:Connect(function(key)
         local sp = Instance.new('SelectionBox',n_plr.Character.Torso)
         sp.Name = 'SelectedPlayer'
         sp.Adornee = n_plr.Character.HumanoidRootPart
-        sp.Color3 = Color3.new(0, 0, 255)
-        sp.Transparency = 0.45
+        sp.Color3 = Color3.new(0, 255, 0)
+        sp.Transparency = 0.25
         tar = n_plr
         local tar
         local range = 10
@@ -156,7 +156,7 @@ rs.Stepped:Wait() --LOLLLL Fixed.
                 v.DamageRemote:FireServer(tar.Character:FindFirstChildOfClass'Humanoid')
             elseif v:IsA'Tool' and v.Name == 'Kawaii Revolver' and not v:FindFirstChild'ClientCD' and v:FindFirstChild'ReplicateRemote' and v:FindFirstChild'Barrel' and v.Barrel:FindFirstChild'Attachment' and tar and tar.Character and tar.Character:FindFirstChild'Head' then
                 v.Parent = plr.Character
-                AddCd(v,2)
+                AddCd(v,0.6)
                 rs.Stepped:wait()
                 plr.Character:FindFirstChildOfClass'Humanoid':LoadAnimation(v.Fire):Play()
                 Shoot(v.Barrel.Attachment.WorldPosition,tar.Character:FindFirstChild("Torso").Position,v)
@@ -206,7 +206,7 @@ rs.Stepped:Wait() --LOLLLL Fixed.
                 v.DamageRemote:FireServer(tar.Character:FindFirstChildOfClass'Humanoid')
             elseif v:IsA'Tool' and v.Name == 'Kawaii Revolver' and not v:FindFirstChild'ClientCD' and v:FindFirstChild'ReplicateRemote' and v:FindFirstChild'Barrel' and v.Barrel:FindFirstChild'Attachment' and tar and tar.Character and tar.Character:FindFirstChild'Head' then
                 v.Parent = plr.Character
-                AddCd(v,1)
+                AddCd(v,0.5)
                 rs.Stepped:wait()
                 plr.Character:FindFirstChildOfClass'Humanoid':LoadAnimation(v.Fire):Play()
                 Shoot(v.Barrel.Attachment.WorldPosition,tar.Character:FindFirstChild("Torso").Position,v)
@@ -251,7 +251,7 @@ plr:GetMouse().KeyDown:Connect(function(key)
                 if v:FindFirstChild'Blade' then
                     for _,x in next,v.Blade:GetChildren() do
                         if x:IsA'Sound' then
-                        wait(.1)
+                        wait(0.2)
                             x:Play()
                         end
                     end
