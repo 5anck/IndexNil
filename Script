@@ -259,7 +259,7 @@ plr:GetMouse().KeyDown:Connect(function(key)
                 v.DamageRemote:FireServer(tar.Character:FindFirstChildOfClass'Humanoid')
             elseif v:IsA'Tool' and v.Name == 'Kawaii Revolver' and not v:FindFirstChild'ClientCD' and v:FindFirstChild'ReplicateRemote' and v:FindFirstChild'Barrel' and v.Barrel:FindFirstChild'Attachment' and tar and tar.Character and tar.Character:FindFirstChild'Torso' then
                 v.Parent = plr.Character
-                AddCd(v,0)
+                AddCd(v,0.5)
                 rs.Stepped:wait()
                 plr.Character:FindFirstChildOfClass'Humanoid':LoadAnimation(v.Fire):Play()
                 Shoot(v.Barrel.Attachment.WorldPosition,tar.Character:FindFirstChild("Torso").Position,v)
