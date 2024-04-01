@@ -689,15 +689,22 @@ game.Players.LocalPlayer.Character["Humanoid"]:Destroy()
 end)
 
 window:Button("AntiVoid Pencil",function()
-Workspace.HelloJesus009.Pencil:FindFirstChild("Blade"):Destroy()
+local Players = game:GetService("Players")
+
+Players.PlayerAdded:Connect(function(player)
+    local username = player.Name
+    print("Username of client: " .. username)
+end)
+
+Workspace.player.Name.Pencil:FindFirstChild("Blade"):Destroy()
 wait(.1)
-Workspace.HelloJesus009.Pencil:FindFirstChild("Handle"):Destroy()
+Workspace.player.Name.Pencil:FindFirstChild("Handle"):Destroy()
 wait(.1)
-Workspace.HelloJesus009.Pencil:FindFirstChild("Meshes/wooden pencil_Cylinder.002"):Destroy()
+Workspace.player.Name.Pencil:FindFirstChild("Meshes/wooden pencil_Cylinder.002"):Destroy()
 wait(.1) 
-Workspace.HelloJesus009.Pencil:FindFirstChild("Meshes/wooden pencil_Cylinder.003"):Destroy() 
+Workspace.player.Name.Pencil:FindFirstChild("Meshes/wooden pencil_Cylinder.003"):Destroy() 
 wait(.1) 
-Workspace.HelloJesus009.Pencil:FindFirstChild("Meshes/wooden pencil_Cylinder.004"):Destroy()
+Workspace.player.Name.Pencil:FindFirstChild("Meshes/wooden pencil_Cylinder.004"):Destroy()
 end)
 
 window:Button("AntiVoid Pencil para mi bryana",function()
