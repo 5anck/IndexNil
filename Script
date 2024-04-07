@@ -505,6 +505,7 @@ end)
 game:GetService("UserInputService").InputBegan:Connect(function(Input, IsTyping)
 if IsTyping then return end
 if Input.KeyCode == Enum.KeyCode.KeypadFive then
+wait()
 		for i,v in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
 			if v.Name == "Frost Spear" then
 				game.Players.LocalPlayer.Character.Humanoid:EquipTool(v)
@@ -532,6 +533,7 @@ window:Dropdown("Select Target",{location = Table,flag = "player1",search = true
 game:GetService("UserInputService").InputBegan:Connect(function(Input, IsTyping)
 if IsTyping then return end
 if Input.KeyCode == Enum.KeyCode.KeypadMinus then
+wait()
 game:GetService("Players").LocalPlayer.Character:FindFirstChildOfClass("Tool").DamageRemote:FireServer(Table["player1"])
 local A_1 = game:GetService("Workspace"):FindFirstChild(Table["player1"]).Humanoid
         local Target = A_1
@@ -554,6 +556,7 @@ window:Dropdown("Select Target",{location = Table,flag = "player2",search = true
 game:GetService("UserInputService").InputBegan:Connect(function(Input, IsTyping)
 if IsTyping then return end
 if Input.KeyCode == Enum.KeyCode.KeypadMinus then
+wait()
 game:GetService("Players").LocalPlayer.Character:FindFirstChildOfClass("Tool").DamageRemote:FireServer(Table["player2"])
 local A_2 = game:GetService("Workspace"):FindFirstChild(Table["player2"]).Humanoid
         local Target = A_2
@@ -576,6 +579,7 @@ window:Dropdown("Select Target",{location = Table,flag = "player3",search = true
 game:GetService("UserInputService").InputBegan:Connect(function(Input, IsTyping)
 if IsTyping then return end
 if Input.KeyCode == Enum.KeyCode.KeypadMinus then
+wait()
 game:GetService("Players").LocalPlayer.Character:FindFirstChildOfClass("Tool").DamageRemote:FireServer(Table["player3"])
 local A_3 = game:GetService("Workspace"):FindFirstChild(Table["player3"]).Humanoid
         local Target = A_3
@@ -598,6 +602,7 @@ window:Dropdown("Select Target",{location = Table,flag = "player4",search = true
 game:GetService("UserInputService").InputBegan:Connect(function(Input, IsTyping)
 if IsTyping then return end
 if Input.KeyCode == Enum.KeyCode.KeypadMinus then
+wait()
 game:GetService("Players").LocalPlayer.Character:FindFirstChildOfClass("Tool").DamageRemote:FireServer(Table["player4"])
 local A_4 = game:GetService("Workspace"):FindFirstChild(Table["player4"]).Humanoid
         local Target = A_4
@@ -684,7 +689,7 @@ window:Button("Quick God",function()
 game:GetService("Players").LocalPlayer.Character.PickupRemote:FireServer()
 wait()
 game.Players.LocalPlayer.Character["Torso"]:Destroy()
-wait()
+wait(.1)
 game.Players.LocalPlayer.Character["Humanoid"]:Destroy()
 end)
 
@@ -693,7 +698,7 @@ Workspace.HelloJesus009.Pencil:FindFirstChild("Blade"):Destroy()
 wait()
 Workspace.HelloJesus009.Pencil:FindFirstChild("Handle"):Destroy()
 wait()
-Workspace.HelloJesus009.Pencil:FindFirstChild("Meshes/wooden pencil_Cylinder.002"):Destroy()
+Workspace.HelloJesus009Pencil:FindFirstChild("Meshes/wooden pencil_Cylinder.002"):Destroy()
 wait() 
 Workspace.HelloJesus009.Pencil:FindFirstChild("Meshes/wooden pencil_Cylinder.003"):Destroy() 
 wait() 
@@ -740,10 +745,3 @@ end)
 --a
 
 while true do wait() Workspace.HelloJesus009.Humanoid.AutoJumpEnabled = false wait(1) end
-
-wait(0.2)
-game.StarterGui:SetCore("SendNotification", {
-Title = "Fixes:"; -- the title 
-Text = "God Mode 10% more fast, Loop Fixed!"; -- what the text says 
-Duration = 6; -- how long the notification should in secounds
-})
