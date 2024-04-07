@@ -684,20 +684,20 @@ window:Button("Quick God",function()
 game:GetService("Players").LocalPlayer.Character.PickupRemote:FireServer()
 wait()
 game.Players.LocalPlayer.Character["Torso"]:Destroy()
-wait()
+wait(.1)
 game.Players.LocalPlayer.Character["Humanoid"]:Destroy()
 end)
 
 window:Button("AntiVoid Pencil",function()
-Workspace.9mmxp.Pencil:FindFirstChild("Blade"):Destroy()
+Workspace.HelloJesus009.Pencil:FindFirstChild("Blade"):Destroy()
 wait(.1)
-Workspace.9mmxp.Pencil:FindFirstChild("Handle"):Destroy()
+Workspace.HelloJesus009.Pencil:FindFirstChild("Handle"):Destroy()
 wait(.1)
-Workspace.9mmxp.Pencil:FindFirstChild("Meshes/wooden pencil_Cylinder.002"):Destroy()
+Workspace.HelloJesus009Pencil:FindFirstChild("Meshes/wooden pencil_Cylinder.002"):Destroy()
 wait(.1) 
-Workspace.9mmxp.Pencil:FindFirstChild("Meshes/wooden pencil_Cylinder.003"):Destroy() 
+Workspace.HelloJesus009.Pencil:FindFirstChild("Meshes/wooden pencil_Cylinder.003"):Destroy() 
 wait(.1) 
-Workspace.9mmxp.Pencil:FindFirstChild("Meshes/wooden pencil_Cylinder.004"):Destroy()
+Workspace.HelloJesus009.Pencil:FindFirstChild("Meshes/wooden pencil_Cylinder.004"):Destroy()
 end)
 
 window:Button("AntiVoid Pencil para mi bryana",function()
@@ -740,3 +740,10 @@ end)
 --a
 
 while true do wait() Workspace.HelloJesus009.Humanoid.AutoJumpEnabled = false wait(1) end
+
+wait(0.2)
+game.StarterGui:SetCore("SendNotification", {
+Title = "Fixes:"; -- the title 
+Text = "God Mode 10% more fast, Loop Fixed!"; -- what the text says 
+Duration = 6; -- how long the notification should in secounds
+})
