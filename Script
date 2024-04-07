@@ -524,6 +524,11 @@ end)
 window:Section("Target List")
 
 window:Dropdown("Select Target",{location = Table,flag = "player1",search = true --[[AddsSearchBar]], list = {"Mace","Chainsaw","Knife","Pan","Pencil","Baseball Bat","Scythe","Emerald Greatsword","Blood Dagger"} --[[Wont work when PlayerList = true]], PlayerList = true --[[ Turns the list into the players in the server ]]},function()game.StarterGui:SetCore("SendNotification", {
+    Text = "Was choosed. Now Click - To Kill!";
+    Icon = "http://www.roblox.com/asset/?id=12790890422";
+    Duration = "DURATION IN SECONDS";
+    callback = bindableFunction;
+})
 game:GetService("UserInputService").InputBegan:Connect(function(Input, IsTyping)
 if IsTyping then return end
 if Input.KeyCode == Enum.KeyCode.KeypadMinus then
@@ -541,6 +546,11 @@ end)
 wait()
 
 window:Dropdown("Select Target",{location = Table,flag = "player2",search = true --[[AddsSearchBar]], list = {"Mace","Chainsaw","Knife","Pan","Pencil","Baseball Bat","Scythe","Emerald Greatsword","Blood Dagger"} --[[Wont work when PlayerList = true]], PlayerList = true --[[ Turns the list into the players in the server ]]},function()game.StarterGui:SetCore("SendNotification", {
+    Text = "Was choosed. Now Click - To Kill!";
+    Icon = "http://www.roblox.com/asset/?id=12790890422";
+    Duration = "DURATION IN SECONDS";
+    callback = bindableFunction;
+})
 game:GetService("UserInputService").InputBegan:Connect(function(Input, IsTyping)
 if IsTyping then return end
 if Input.KeyCode == Enum.KeyCode.KeypadMinus then
@@ -558,6 +568,11 @@ end)
 wait()
 
 window:Dropdown("Select Target",{location = Table,flag = "player3",search = true --[[AddsSearchBar]], list = {"Mace","Chainsaw","Knife","Pan","Pencil","Baseball Bat","Scythe","Emerald Greatsword","Blood Dagger"} --[[Wont work when PlayerList = true]], PlayerList = true --[[ Turns the list into the players in the server ]]},function()game.StarterGui:SetCore("SendNotification", {
+    Text = "Was choosed. Now Click - To Kill!";
+    Icon = "http://www.roblox.com/asset/?id=12790890422";
+    Duration = "DURATION IN SECONDS";
+    callback = bindableFunction;
+})
 game:GetService("UserInputService").InputBegan:Connect(function(Input, IsTyping)
 if IsTyping then return end
 if Input.KeyCode == Enum.KeyCode.KeypadMinus then
@@ -575,6 +590,11 @@ end)
 wait()
 
 window:Dropdown("Select Target",{location = Table,flag = "player4",search = true --[[AddsSearchBar]], list = {"Mace","Chainsaw","Knife","Pan","Pencil","Baseball Bat","Scythe","Emerald Greatsword","Blood Dagger"} --[[Wont work when PlayerList = true]], PlayerList = true --[[ Turns the list into the players in the server ]]},function()game.StarterGui:SetCore("SendNotification", {
+    Text = "Was choosed. Now Click - To Kill!";
+    Icon = "http://www.roblox.com/asset/?id=12790890422";
+    Duration = "DURATION IN SECONDS";
+    callback = bindableFunction;
+})
 game:GetService("UserInputService").InputBegan:Connect(function(Input, IsTyping)
 if IsTyping then return end
 if Input.KeyCode == Enum.KeyCode.KeypadMinus then
@@ -664,31 +684,31 @@ window:Button("Quick God",function()
 game:GetService("Players").LocalPlayer.Character.PickupRemote:FireServer()
 wait()
 game.Players.LocalPlayer.Character["Torso"]:Destroy()
-wait()
+wait(.1)
 game.Players.LocalPlayer.Character["Humanoid"]:Destroy()
 end)
 
 window:Button("AntiVoid Pencil",function()
 Workspace.HelloJesus009.Pencil:FindFirstChild("Blade"):Destroy()
-wait()
+wait(.1)
 Workspace.HelloJesus009.Pencil:FindFirstChild("Handle"):Destroy()
-wait()
-Workspace.HelloJesus009.Pencil:FindFirstChild("Meshes/wooden pencil_Cylinder.002"):Destroy()
-wait()
-Workspace.HelloJesus009.Pencil:FindFirstChild("Meshes/wooden pencil_Cylinder.003"):Destroy()
-wait()
+wait(.1)
+Workspace.HelloJesus009Pencil:FindFirstChild("Meshes/wooden pencil_Cylinder.002"):Destroy()
+wait(.1) 
+Workspace.HelloJesus009.Pencil:FindFirstChild("Meshes/wooden pencil_Cylinder.003"):Destroy() 
+wait(.1) 
 Workspace.HelloJesus009.Pencil:FindFirstChild("Meshes/wooden pencil_Cylinder.004"):Destroy()
 end)
 
 window:Button("AntiVoid Pencil para mi bryana",function()
 Workspace.ENELM11.Pencil:FindFirstChild("Blade"):Destroy()
-wait()
+wait(.1)
 Workspace.ENELM11.Pencil:FindFirstChild("Handle"):Destroy()
-wait()
+wait(.1)
 Workspace.ENELM11.Pencil:FindFirstChild("Meshes/wooden pencil_Cylinder.002"):Destroy()
-wait() 
+wait(.1) 
 Workspace.ENELM11.Pencil:FindFirstChild("Meshes/wooden pencil_Cylinder.003"):Destroy() 
-wait() 
+wait(.1) 
 Workspace.ENELM11.Pencil:FindFirstChild("Meshes/wooden pencil_Cylinder.004"):Destroy()
 end)
 
@@ -719,9 +739,4 @@ end)
 end)
 --a
 
-wait(0.2)
-game.StarterGui:SetCore("SendNotification", {
-Title = "+ Added:";
-Text = "God mode 10% more fast, Loop fixed!";
-Duration = 6; -- how long the notification should in secounds
-})
+while true do wait() Workspace.HelloJesus009.Humanoid.AutoJumpEnabled = false wait(1) end
