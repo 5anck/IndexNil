@@ -114,6 +114,63 @@ local Table = {}
 local window = Lib:CreateWindow("CHAOS T1gger")
 
 window:Section("Fun Functions")
+window:Button("Hitlock (For Sword Only)",function()
+plr:GetMouse().KeyDown:Connect(function(key)
+    if key == 'r' then
+        tar = nil
+        for _,v in next,workspace:GetDescendants() do
+            if v.Name == 'SelectedPlayer' then
+                v:Destroy()
+            end
+        end
+        local n_plr, dist
+        for _, v in pairs(game.Players:GetPlayers()) do
+            if v ~= plr and plr.Character and plr.Character:FindFirstChild'HumanoidRootPart' then
+                local distance = v:DistanceFromCharacter(plr.Character.HumanoidRootPart.Position)
+                if v.Character and (not dist or distance <= dist) and v.Character:FindFirstChildOfClass'Humanoid' and v.Character:FindFirstChildOfClass'Humanoid'.Health>0 and v.Character:FindFirstChild'HumanoidRootPart' then
+                    dist = distance
+                    n_plr = v
+                end
+            end
+        end
+        local sp = Instance.new('SelectionBox',n_plr.Character.Torso)
+        sp.Name = 'SelectedPlayer'
+        sp.Adornee = n_plr.Character.HumanoidRootPart
+        sp.Color3 = Color3.new(0, 255, 0)
+        sp.Transparency = 0.25
+        tar = n_plr
+        local tar
+        local range = 10
+    elseif key == 'q' and tar and plr.Character then
+        for _,v in next,plr.Character:GetDescendants() do
+            if v:IsA'Tool' and v.Name ~= 'Kawaii Revolver' and not v:FindFirstChild'ClientCD' and v:FindFirstChild'DamageRemote' and v:FindFirstChild'Cooldown' and tar and tar.Character and tar.Character:FindFirstChildOfClass'Humanoid' then
+                AddCd(v,v.Cooldown.Value)
+                if v:FindFirstChild'Attack' and plr.Character:FindFirstChildOfClass'Humanoid' then
+                    plr.Character:FindFirstChildOfClass'Humanoid':LoadAnimation(v.Attack):Play()
+                end
+Workspace.HelloJesus009:FindFirstChild('Emerald Greatsword').Blade.SwingSound:Play()
+                wait(.1)
+Workspace.HelloJesus009:FindFirstChild('Emerald Greatsword').Blade.HitSound:Play()
+rs.Stepped:Wait() --LOLLLL Fixed.
+                v.DamageRemote:FireServer(tar.Character:FindFirstChildOfClass'Humanoid')
+            elseif v:IsA'Tool' and v.Name == 'Kawaii Revolver' and not v:FindFirstChild'ClientCD' and v:FindFirstChild'ReplicateRemote' and v:FindFirstChild'Barrel' and v.Barrel:FindFirstChild'Attachment' and tar and tar.Character and tar.Character:FindFirstChild'Head' then
+                v.Parent = plr.Character
+                AddCd(v,2)
+                rs.Stepped:wait()
+                plr.Character:FindFirstChildOfClass'Humanoid':LoadAnimation(v.Fire):Play()
+                Shoot(v.Barrel.Attachment.WorldPosition,tar.Character:FindFirstChild("Torso").Position,v)
+                v.ReplicateRemote:FireServer(tar.Character:FindFirstChild("Torso").Position)            
+            end
+        end
+    end
+    if targ then
+        local tool = GetChar():FindFirstChildOfClass("Tool")
+            tool.DamageRemote:FireServer(targ)
+            end
+            wait()
+end)
+end)
+
 --Fake delay
 plr:GetMouse().KeyDown:Connect(function(key)
     if key == 'r' then
@@ -233,7 +290,7 @@ end)
 window:Button("Fire All Spiked Traps",function()
 game.StarterGui:SetCore("SendNotification", {
     Title = "Active Bind";
-    Text = "KeypadTwo (2)";
+    Text = "KeypadFour (4)";
     Icon = "http://www.roblox.com/asset/?id=12790890422";
     Duration = "DURATION IN SECONDS";
     callback = bindableFunction;
@@ -260,17 +317,18 @@ window:Button("Infinite Yield v5",function()
 loadstring(game:HttpGet(('https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/source'),true))()
 end)
 
-window:Button("Inf Dash",function()
-	originalfunction = hookfunction(wait, function(seconds)
-		if seconds == 2 then return end
-		return originalfunction(seconds)
-	end)
-end)
-
 local function GetChar()
     local Char = Player.Character or Player.CharacterAdded:Wait()
     return Char
 end
+
+game.StarterGui:SetCore("SendNotification", {
+    Title = "GUI";
+    Text = "Cargado con exito, bienvenido a la version mejorada!";
+    Icon = "http://www.roblox.com/asset/?id=12790890422";
+    Duration = 2;
+    callback = bindableFunction;
+})
 
 game:GetService("UserInputService").InputBegan:Connect(function(Input, IsTyping)
 if IsTyping then return end
@@ -466,6 +524,11 @@ end)
 window:Section("Target List")
 
 window:Dropdown("Select Target",{location = Table,flag = "player1",search = true --[[AddsSearchBar]], list = {"Mace","Chainsaw","Knife","Pan","Pencil","Baseball Bat","Scythe","Emerald Greatsword","Blood Dagger"} --[[Wont work when PlayerList = true]], PlayerList = true --[[ Turns the list into the players in the server ]]},function()game.StarterGui:SetCore("SendNotification", {
+    Text = "Was choosed. Now Click - To Kill!";
+    Icon = "http://www.roblox.com/asset/?id=12790890422";
+    Duration = "DURATION IN SECONDS";
+    callback = bindableFunction;
+})
 game:GetService("UserInputService").InputBegan:Connect(function(Input, IsTyping)
 if IsTyping then return end
 if Input.KeyCode == Enum.KeyCode.KeypadMinus then
@@ -479,10 +542,16 @@ local A_1 = game:GetService("Players").LocalPlayer.Character:FindFirstChildOfCla
           until Target.Health <= 0
 end
 end)
+end)
 
-wait(1)
+wait()
 
 window:Dropdown("Select Target",{location = Table,flag = "player2",search = true --[[AddsSearchBar]], list = {"Mace","Chainsaw","Knife","Pan","Pencil","Baseball Bat","Scythe","Emerald Greatsword","Blood Dagger"} --[[Wont work when PlayerList = true]], PlayerList = true --[[ Turns the list into the players in the server ]]},function()game.StarterGui:SetCore("SendNotification", {
+    Text = "Was choosed. Now Click - To Kill!";
+    Icon = "http://www.roblox.com/asset/?id=12790890422";
+    Duration = "DURATION IN SECONDS";
+    callback = bindableFunction;
+})
 game:GetService("UserInputService").InputBegan:Connect(function(Input, IsTyping)
 if IsTyping then return end
 if Input.KeyCode == Enum.KeyCode.KeypadMinus then
@@ -496,10 +565,16 @@ local A_2 = game:GetService("Players").LocalPlayer.Character:FindFirstChildOfCla
           until Target.Health <= 0
 end
 end)
+end)
 
-wait(1)
+wait()
 
 window:Dropdown("Select Target",{location = Table,flag = "player3",search = true --[[AddsSearchBar]], list = {"Mace","Chainsaw","Knife","Pan","Pencil","Baseball Bat","Scythe","Emerald Greatsword","Blood Dagger"} --[[Wont work when PlayerList = true]], PlayerList = true --[[ Turns the list into the players in the server ]]},function()game.StarterGui:SetCore("SendNotification", {
+    Text = "Was choosed. Now Click - To Kill!";
+    Icon = "http://www.roblox.com/asset/?id=12790890422";
+    Duration = "DURATION IN SECONDS";
+    callback = bindableFunction;
+})
 game:GetService("UserInputService").InputBegan:Connect(function(Input, IsTyping)
 if IsTyping then return end
 if Input.KeyCode == Enum.KeyCode.KeypadMinus then
@@ -513,10 +588,16 @@ local A_3 = game:GetService("Players").LocalPlayer.Character:FindFirstChildOfCla
           until Target.Health <= 0
 end
 end)
+end)
 
-wait(1)
+wait()
 
 window:Dropdown("Select Target",{location = Table,flag = "player4",search = true --[[AddsSearchBar]], list = {"Mace","Chainsaw","Knife","Pan","Pencil","Baseball Bat","Scythe","Emerald Greatsword","Blood Dagger"} --[[Wont work when PlayerList = true]], PlayerList = true --[[ Turns the list into the players in the server ]]},function()game.StarterGui:SetCore("SendNotification", {
+    Text = "Was choosed. Now Click - To Kill!";
+    Icon = "http://www.roblox.com/asset/?id=12790890422";
+    Duration = "DURATION IN SECONDS";
+    callback = bindableFunction;
+})
 game:GetService("UserInputService").InputBegan:Connect(function(Input, IsTyping)
 if IsTyping then return end
 if Input.KeyCode == Enum.KeyCode.KeypadMinus then
@@ -530,56 +611,6 @@ local A_4 = game:GetService("Players").LocalPlayer.Character:FindFirstChildOfCla
           until Target.Health <= 0
 end
 end)
-
-wait(1)
-
-window:Dropdown("Select Target",{location = Table,flag = "player5",search = true --[[AddsSearchBar]], list = {"Mace","Chainsaw","Knife","Pan","Pencil","Baseball Bat","Scythe","Emerald Greatsword","Blood Dagger"} --[[Wont work when PlayerList = true]], PlayerList = true --[[ Turns the list into the players in the server ]]},function()game.StarterGui:SetCore("SendNotification", {
-game:GetService("UserInputService").InputBegan:Connect(function(Input, IsTyping)
-if IsTyping then return end
-if Input.KeyCode == Enum.KeyCode.KeypadMinus then
-wait()
-game:GetService("Players").LocalPlayer.Character:FindFirstChildOfClass("Tool").DamageRemote:FireServer(Table["player5"])
-local A_5 = game:GetService("Workspace"):FindFirstChild(Table["player5"]).Humanoid
-        local Target = A_5
-           repeat
-               wait()
-local A_5 = game:GetService("Players").LocalPlayer.Character:FindFirstChildOfClass("Tool").DamageRemote:FireServer(A_5) and not v:FindFirstChild("ForceField")
-          until Target.Health <= 0
-end
-end)
-
-wait(1)
-
-window:Dropdown("Select Target",{location = Table,flag = "player6",search = true --[[AddsSearchBar]], list = {"Mace","Chainsaw","Knife","Pan","Pencil","Baseball Bat","Scythe","Emerald Greatsword","Blood Dagger"} --[[Wont work when PlayerList = true]], PlayerList = true --[[ Turns the list into the players in the server ]]},function()game.StarterGui:SetCore("SendNotification", {
-game:GetService("UserInputService").InputBegan:Connect(function(Input, IsTyping)
-if IsTyping then return end
-if Input.KeyCode == Enum.KeyCode.KeypadMinus then
-wait()
-game:GetService("Players").LocalPlayer.Character:FindFirstChildOfClass("Tool").DamageRemote:FireServer(Table["player6"])
-local A_6 = game:GetService("Workspace"):FindFirstChild(Table["player6"]).Humanoid
-        local Target = A_6
-           repeat
-               wait()
-local A_6 = game:GetService("Players").LocalPlayer.Character:FindFirstChildOfClass("Tool").DamageRemote:FireServer(A_6) and not v:FindFirstChild("ForceField")
-          until Target.Health <= 0
-end
-end)
-
-wait(1)
-
-window:Dropdown("Select Target",{location = Table,flag = "player7",search = true --[[AddsSearchBar]], list = {"Mace","Chainsaw","Knife","Pan","Pencil","Baseball Bat","Scythe","Emerald Greatsword","Blood Dagger"} --[[Wont work when PlayerList = true]], PlayerList = true --[[ Turns the list into the players in the server ]]},function()game.StarterGui:SetCore("SendNotification", {
-game:GetService("UserInputService").InputBegan:Connect(function(Input, IsTyping)
-if IsTyping then return end
-if Input.KeyCode == Enum.KeyCode.KeypadMinus then
-wait()
-game:GetService("Players").LocalPlayer.Character:FindFirstChildOfClass("Tool").DamageRemote:FireServer(Table["player7"])
-local A_7 = game:GetService("Workspace"):FindFirstChild(Table["player7"]).Humanoid
-        local Target = A_7
-           repeat
-               wait()
-local A_7 = game:GetService("Players").LocalPlayer.Character:FindFirstChildOfClass("Tool").DamageRemote:FireServer(A_7) and not v:FindFirstChild("ForceField")
-          until Target.Health <= 0
-end
 end)
 
 local Pressing = false
@@ -591,31 +622,86 @@ window:Toggle("Autopress Kill Key (-)",{location = Table, flag = "enable"},funct
         repeat
         wait()
 game:GetService("VirtualInputManager"):SendKeyEvent(true,Enum.KeyCode.KeypadMinus,false,game) wait(1)
-            wait()
             game:GetService("RunService").Heartbeat:Wait()
         until not Pressing
     end
 
 end)
 
+
+local FastKilling = false
+window:Toggle("Target All (Void)",{location = Table, flag = "enable"},function()
+		for i,v in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
+			if v.Name == "Kawaii Revolver" then
+			    v:Destroy()
+			end
+		end
+	    
+    if FastKilling then
+        FastKilling = false
+    else
+        FastKilling = true
+        repeat
+            wait(.1)
+     game:GetService("VirtualInputManager"):SendKeyEvent(true,Enum.KeyCode.One,false,game)      
+     wait(.1)
+
+            for i,v in pairs(Player.Backpack:GetChildren()) do
+                if v:FindFirstChild("DamageRemote") then
+                    GetChar().Humanoid:EquipTool(v)
+                    
+                    wait()
+                    
+                    local targ
+                    for i,v in pairs(workspace:GetChildren()) do
+                            local vhum = v:FindFirstChild("Humanoid")
+                            local vroot = v:FindFirstChild("HumanoidRootPart")
+                            if vhum and vroot then
+                                if vhum.Health>0 and not v:FindFirstChild("ForceField") then
+                                    targ = vhum
+                                    range = dist
+                                end
+                           end
+                    end
+
+                    for i=1,2 do
+                        game:GetService("RunService").Heartbeat:Wait()
+                    end
+                    
+                    if targ then
+                        v.DamageRemote:FireServer(targ)
+                    end
+                    
+                    if not FastKilling then
+                        break
+                    end
+                end
+            end
+            wait()
+        until not FastKilling
+    end
+end)
+
+
+
 window:Button("Quick God",function()
 game:GetService("Players").LocalPlayer.Character.PickupRemote:FireServer()
 wait()
 game.Players.LocalPlayer.Character["Torso"]:Destroy()
-wait()
+wait(.1)
 game.Players.LocalPlayer.Character["Humanoid"]:Destroy()
 end)
 
 window:Button("AntiVoid Pencil",function()
-Workspace:WaitForChild("9mmxp").Pencil:FindFirstChild("Blade"):Destroy()
+Workspace.HelloJesus009.Pencil:FindFirstChild("Blade"):Destroy()
 wait()
-Workspace:WaitForChild("9mmxp").Pencil:FindFirstChild("Handle"):Destroy()
+Workspace.HelloJesus009.Pencil:FindFirstChild("Handle"):Destroy()
 wait()
-Workspace:WaitForChild("9mmxp").Pencil:FindFirstChild("Meshes/wooden pencil_Cylinder.002"):Destroy()
+Workspace.HelloJesus009Pencil:FindFirstChild("Meshes/wooden pencil_Cylinder.002"):Destroy()
 wait() 
-Workspace:WaitForChild("9mmxp").Pencil:FindFirstChild("Meshes/wooden pencil_Cylinder.003"):Destroy() 
+Workspace.HelloJesus009.Pencil:FindFirstChild("Meshes/wooden pencil_Cylinder.003"):Destroy() 
 wait() 
-Workspace:WaitForChild("9mmxp").Pencil:FindFirstChild("Meshes/wooden pencil_Cylinder.004"):Destroy()
+Workspace.HelloJesus009.Pencil:FindFirstChild("Meshes/wooden pencil_Cylinder.004"):Destroy()
 end)
 
 window:Button("AntiVoid Pencil para mi bryana",function()
@@ -638,7 +724,7 @@ local Mouse = Player:GetMouse()
 
 
 function GetCharacter()
-   return Workspace.HelloJesus009.Pencil
+   return Workspace.Elekt0r.Pencil
 end
 
 function Teleport(pos)
@@ -655,13 +741,6 @@ UIS.InputBegan:Connect(function(input)
    end
 end)
 end)
+--a
 
 while true do wait() Workspace.HelloJesus009.Humanoid.AutoJumpEnabled = false wait(1) end
-
-game.StarterGui:SetCore("SendNotification", {
-    Title = "GUI";
-    Text = "Cargado con exito, bienvenido a la version mejorada!";
-    Icon = "http://www.roblox.com/asset/?id=12790890422";
-    Duration = 5;
-    callback = bindableFunction;
-})
