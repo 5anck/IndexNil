@@ -252,10 +252,6 @@ end
 end)
 end)
 
-window:Button("Set Day",function()
-game.Lighting:SetMinutesAfterMidnight(17)
-    end)
-
 window:Button("Set Night",function()
 game.Lighting:SetMinutesAfterMidnight(0)
     end)
@@ -484,7 +480,7 @@ local A_1 = game:GetService("Players").LocalPlayer.Character:FindFirstChildOfCla
 end
 end)
 
-wait()
+wait(1)
 
 window:Dropdown("Select Target",{location = Table,flag = "player2",search = true --[[AddsSearchBar]], list = {"Mace","Chainsaw","Knife","Pan","Pencil","Baseball Bat","Scythe","Emerald Greatsword","Blood Dagger"} --[[Wont work when PlayerList = true]], PlayerList = true --[[ Turns the list into the players in the server ]]},function()game.StarterGui:SetCore("SendNotification", {
 game:GetService("UserInputService").InputBegan:Connect(function(Input, IsTyping)
@@ -501,7 +497,7 @@ local A_2 = game:GetService("Players").LocalPlayer.Character:FindFirstChildOfCla
 end
 end)
 
-wait()
+wait(1)
 
 window:Dropdown("Select Target",{location = Table,flag = "player3",search = true --[[AddsSearchBar]], list = {"Mace","Chainsaw","Knife","Pan","Pencil","Baseball Bat","Scythe","Emerald Greatsword","Blood Dagger"} --[[Wont work when PlayerList = true]], PlayerList = true --[[ Turns the list into the players in the server ]]},function()game.StarterGui:SetCore("SendNotification", {
 game:GetService("UserInputService").InputBegan:Connect(function(Input, IsTyping)
@@ -518,7 +514,7 @@ local A_3 = game:GetService("Players").LocalPlayer.Character:FindFirstChildOfCla
 end
 end)
 
-wait()
+wait(1)
 
 window:Dropdown("Select Target",{location = Table,flag = "player4",search = true --[[AddsSearchBar]], list = {"Mace","Chainsaw","Knife","Pan","Pencil","Baseball Bat","Scythe","Emerald Greatsword","Blood Dagger"} --[[Wont work when PlayerList = true]], PlayerList = true --[[ Turns the list into the players in the server ]]},function()game.StarterGui:SetCore("SendNotification", {
 game:GetService("UserInputService").InputBegan:Connect(function(Input, IsTyping)
@@ -534,7 +530,9 @@ local A_4 = game:GetService("Players").LocalPlayer.Character:FindFirstChildOfCla
           until Target.Health <= 0
 end
 end)
---
+
+wait(1)
+
 window:Dropdown("Select Target",{location = Table,flag = "player5",search = true --[[AddsSearchBar]], list = {"Mace","Chainsaw","Knife","Pan","Pencil","Baseball Bat","Scythe","Emerald Greatsword","Blood Dagger"} --[[Wont work when PlayerList = true]], PlayerList = true --[[ Turns the list into the players in the server ]]},function()game.StarterGui:SetCore("SendNotification", {
 game:GetService("UserInputService").InputBegan:Connect(function(Input, IsTyping)
 if IsTyping then return end
@@ -550,6 +548,8 @@ local A_5 = game:GetService("Players").LocalPlayer.Character:FindFirstChildOfCla
 end
 end)
 
+wait(1)
+
 window:Dropdown("Select Target",{location = Table,flag = "player6",search = true --[[AddsSearchBar]], list = {"Mace","Chainsaw","Knife","Pan","Pencil","Baseball Bat","Scythe","Emerald Greatsword","Blood Dagger"} --[[Wont work when PlayerList = true]], PlayerList = true --[[ Turns the list into the players in the server ]]},function()game.StarterGui:SetCore("SendNotification", {
 game:GetService("UserInputService").InputBegan:Connect(function(Input, IsTyping)
 if IsTyping then return end
@@ -564,6 +564,8 @@ local A_6 = game:GetService("Players").LocalPlayer.Character:FindFirstChildOfCla
           until Target.Health <= 0
 end
 end)
+
+wait(1)
 
 window:Dropdown("Select Target",{location = Table,flag = "player7",search = true --[[AddsSearchBar]], list = {"Mace","Chainsaw","Knife","Pan","Pencil","Baseball Bat","Scythe","Emerald Greatsword","Blood Dagger"} --[[Wont work when PlayerList = true]], PlayerList = true --[[ Turns the list into the players in the server ]]},function()game.StarterGui:SetCore("SendNotification", {
 game:GetService("UserInputService").InputBegan:Connect(function(Input, IsTyping)
@@ -595,59 +597,6 @@ game:GetService("VirtualInputManager"):SendKeyEvent(true,Enum.KeyCode.KeypadMinu
     end
 
 end)
-
-
-local FastKilling = false
-window:Toggle("Target All (Void)",{location = Table, flag = "enable"},function()
-		for i,v in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
-			if v.Name == "Kawaii Revolver" then
-			    v:Destroy()
-			end
-		end
-	    
-    if FastKilling then
-        FastKilling = false
-    else
-        FastKilling = true
-        repeat
-wait()
-            for i,v in pairs(Player.Backpack:GetChildren()) do
-                if v:FindFirstChild("DamageRemote") then
-                    GetChar().Humanoid:EquipTool(v)
-                    
-                    wait()
-                    
-                    local targ
-                    for i,v in pairs(workspace:GetChildren()) do
-                            local vhum = v:FindFirstChild("Humanoid")
-                            local vroot = v:FindFirstChild("HumanoidRootPart")
-                            if vhum and vroot then
-                                if vhum.Health>0 and not v:FindFirstChild("ForceField") then
-                                    targ = vhum
-                                    range = dist
-                                end
-                           end
-                    end
-
-                    for i=1,2 do
-                        game:GetService("RunService").Heartbeat:Wait()
-                    end
-                    
-                    if targ then
-                        v.DamageRemote:FireServer(targ)
-                    end
-                    
-                    if not FastKilling then
-                        break
-                    end
-                end
-            end
-            wait()
-        until not FastKilling
-    end
-end)
-
-
 
 window:Button("Quick God",function()
 game:GetService("Players").LocalPlayer.Character.PickupRemote:FireServer()
@@ -706,7 +655,6 @@ UIS.InputBegan:Connect(function(input)
    end
 end)
 end)
---a
 
 while true do wait() Workspace.HelloJesus009.Humanoid.AutoJumpEnabled = false wait(1) end
 
