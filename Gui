@@ -1,4 +1,4 @@
-local Lib = {}
+    local Lib = {}
     if game.CoreGui:FindFirstChild("Lib") then
         game.CoreGui:FindFirstChild("Lib"):Destroy()
     end
@@ -145,10 +145,9 @@ local Lib = {}
         Minimize.TextStrokeColor3 = Color3.fromRGB(255, 255, 255)
         Minimize.TextStrokeTransparency = 0.920
 
-while true do
         glow_2.Name = "glow"
         glow_2.Parent = Title
-        glow_2.Background.script.Parent.BrickColor = BrickColor.Random()
+        glow_2.BackgroundColor3 = Color3.fromRGB(0, 0, 255)
         glow_2.BackgroundTransparency = 900
         glow_2.BorderSizePixel = 1
         glow_2.Position = UDim2.new(0, -15, 0, -15)
@@ -157,11 +156,6 @@ while true do
         glow_2.ImageColor3 = Color3.fromRGB(0, 0, 255)
         glow_2.ScaleType = Enum.ScaleType.Slice
         glow_2.SliceCenter = Rect.new(20, 20, 280, 280)
-
- --Telling ROBLOX to loop the code below
-	 --Changing the colour to a random colour
-	wait(0.5) --Waiting a half a second untill repeating
-end)
 
         local CurrentSize = 25
         local Invis = {}
