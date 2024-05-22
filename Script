@@ -741,6 +741,32 @@ UIS.InputBegan:Connect(function(input)
    end
 end)
 end)
+
 --a
 
-while true do wait() Workspace.HelloJesus009.Humanoid.AutoJumpEnabled = false wait(1) end
+local Mouse = game.Players.LocalPlayer:GetMouse()
+game:GetService("UserInputService").InputBegan:Connect(function(Input, IsTyping)
+if IsTyping then return end
+if Input.KeyCode == Enum.KeyCode.F1 then
+game.Players.LocalPlayer.Health = 0
+end
+end)
+
+--Reset F1
+
+--Disable AutoJump
+
+game.Players.LocalPlayer.AutoJumpEnabled = false
+
+--Q backspace
+
+local Mouse = game.Players.LocalPlayer:GetMouse()
+game:GetService("UserInputService").InputBegan:Connect(function(Input, IsTyping)
+if IsTyping then return end
+if Input.KeyCode == Enum.KeyCode.Q then
+    wait()
+game:GetService("VirtualInputManager"):SendKeyEvent(true,Enum.KeyCode.Backspace,false,game)
+end
+end)
+
+--
