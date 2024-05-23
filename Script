@@ -137,7 +137,7 @@ plr:GetMouse().KeyDown:Connect(function(key)
         sp.Name = 'SelectedPlayer'
         sp.Adornee = n_plr.Character.HumanoidRootPart
         sp.Color3 = Color3.new(0, 255, 0)
-        sp.Transparency = 0.25
+        sp.Transparency = 1
         tar = n_plr
         local tar
         local range = 10
@@ -194,7 +194,7 @@ plr:GetMouse().KeyDown:Connect(function(key)
         sp.Name = 'SelectedPlayer'
         sp.Adornee = n_plr.Character.HumanoidRootPart
         sp.Color3 = Color3.new(0, 255, 0)
-        sp.Transparency = 0.45
+        sp.Transparency = 1
         tar = n_plr
     elseif key == 'z' and tar and plr.Character then
         for _,v in next,plr.Character:GetDescendants() do
