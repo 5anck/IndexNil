@@ -45,7 +45,7 @@ spawn(function()
             if not uis:IsKeyDown(Enum.KeyCode.E) then
                 plr.Character.Humanoid.WalkSpeed = walkSpeed
             elseif uis:IsKeyDown(Enum.KeyCode.E) then
-                plr.Character.Humanoid.WalkSpeed = walkSpeed+8
+                plr.Character.Humanoid.WalkSpeed = walkSpeed+9
             end
         end)
     end
@@ -111,66 +111,9 @@ end
 local Lib = loadstring(game:HttpGet("https://raw.githubusercontent.com/5anck/IndexNil/main/Gui", true))()
 local Table = {}
 
-local window = Lib:CreateWindow("CHAOS T1gger")
+local window = Lib:CreateWindow("CHAOS 100%")
 
 window:Section("Fun Functions")
-window:Button("Hitlock (For Sword Only)",function()
-plr:GetMouse().KeyDown:Connect(function(key)
-    if key == 'r' then
-        tar = nil
-        for _,v in next,workspace:GetDescendants() do
-            if v.Name == 'SelectedPlayer' then
-                v:Destroy()
-            end
-        end
-        local n_plr, dist
-        for _, v in pairs(game.Players:GetPlayers()) do
-            if v ~= plr and plr.Character and plr.Character:FindFirstChild'HumanoidRootPart' then
-                local distance = v:DistanceFromCharacter(plr.Character.HumanoidRootPart.Position)
-                if v.Character and (not dist or distance <= dist) and v.Character:FindFirstChildOfClass'Humanoid' and v.Character:FindFirstChildOfClass'Humanoid'.Health>0 and v.Character:FindFirstChild'HumanoidRootPart' then
-                    dist = distance
-                    n_plr = v
-                end
-            end
-        end
-        local sp = Instance.new('SelectionBox',n_plr.Character.Torso)
-        sp.Name = 'SelectedPlayer'
-        sp.Adornee = n_plr.Character.HumanoidRootPart
-        sp.Color3 = Color3.new(0, 0, 255)
-        sp.Transparency = 10
-        tar = n_plr
-        local tar
-        local range = 10
-    elseif key == 'q' and tar and plr.Character then
-        for _,v in next,plr.Character:GetDescendants() do
-            if v:IsA'Tool' and v.Name ~= 'Kawaii Revolver' and not v:FindFirstChild'ClientCD' and v:FindFirstChild'DamageRemote' and v:FindFirstChild'Cooldown' and tar and tar.Character and tar.Character:FindFirstChildOfClass'Humanoid' then
-                AddCd(v,v.Cooldown.Value)
-                if v:FindFirstChild'Attack' and plr.Character:FindFirstChildOfClass'Humanoid' then
-                    plr.Character:FindFirstChildOfClass'Humanoid':LoadAnimation(v.Attack):Play()
-                end
-Workspace.HelloJesus009:FindFirstChild('Emerald Greatsword').Blade.SwingSound:Play()
-                wait(.1)
-Workspace.HelloJesus009:FindFirstChild('Emerald Greatsword').Blade.HitSound:Play()
-rs.Stepped:Wait() --LOLLLL Fixed.
-                v.DamageRemote:FireServer(tar.Character:FindFirstChildOfClass'Humanoid')
-            elseif v:IsA'Tool' and v.Name == 'Kawaii Revolver' and not v:FindFirstChild'ClientCD' and v:FindFirstChild'ReplicateRemote' and v:FindFirstChild'Barrel' and v.Barrel:FindFirstChild'Attachment' and tar and tar.Character and tar.Character:FindFirstChild'Head' then
-                v.Parent = plr.Character
-                AddCd(v,2)
-                rs.Stepped:wait()
-                plr.Character:FindFirstChildOfClass'Humanoid':LoadAnimation(v.Fire):Play()
-                Shoot(v.Barrel.Attachment.WorldPosition,tar.Character:FindFirstChild("Torso").Position,v)
-                v.ReplicateRemote:FireServer(tar.Character:FindFirstChild("Torso").Position)            
-            end
-        end
-    end
-    if targ then
-        local tool = GetChar():FindFirstChildOfClass("Tool")
-            tool.DamageRemote:FireServer(targ)
-            end
-            wait()
-end)
-end)
-
 --Fake delay
 plr:GetMouse().KeyDown:Connect(function(key)
     if key == 'r' then
@@ -205,7 +148,7 @@ rs.Stepped:Wait() --LOLLLL Fixed.
                 v.DamageRemote:FireServer(tar.Character:FindFirstChildOfClass'Humanoid')
             elseif v:IsA'Tool' and v.Name == 'Kawaii Revolver' and not v:FindFirstChild'ClientCD' and v:FindFirstChild'ReplicateRemote' and v:FindFirstChild'Barrel' and v.Barrel:FindFirstChild'Attachment' and tar and tar.Character and tar.Character:FindFirstChild'Head' then
                 v.Parent = plr.Character
-                AddCd(v,2)
+AddCd(v,0.1)
                 rs.Stepped:wait()
                 plr.Character:FindFirstChildOfClass'Humanoid':LoadAnimation(v.Fire):Play()
                 Shoot(v.Barrel.Attachment.WorldPosition,tar.Character:FindFirstChild("Torso").Position,v)
@@ -215,7 +158,7 @@ rs.Stepped:Wait() --LOLLLL Fixed.
     end
 end)
 
-window:Button("Hitlock v7",function()
+window:Button("Hitlock v8",function()
 plr:GetMouse().KeyDown:Connect(function(key)
     if key == 'r' then
         tar = nil
@@ -258,11 +201,11 @@ plr:GetMouse().KeyDown:Connect(function(key)
                 v.DamageRemote:FireServer(tar.Character:FindFirstChildOfClass'Humanoid')
             elseif v:IsA'Tool' and v.Name == 'Kawaii Revolver' and not v:FindFirstChild'ClientCD' and v:FindFirstChild'ReplicateRemote' and v:FindFirstChild'Barrel' and v.Barrel:FindFirstChild'Attachment' and tar and tar.Character and tar.Character:FindFirstChild'Torso' then
                 v.Parent = plr.Character
-                AddCd(v,2)
+                AddCd(v,1)
                 rs.Stepped:wait()
                 plr.Character:FindFirstChildOfClass'Humanoid':LoadAnimation(v.Fire):Play()
-                Shoot(v.Barrel.Attachment.WorldPosition,tar.Character:FindFirstChild("Torso").Position,v)
-                v.ReplicateRemote:FireServer(tar.Character:FindFirstChild("Torso").Position)            
+                Shoot(v.Barrel.Attachment.WorldPosition,tar.Character:FindFirstChild("Head").Position,v)
+                v.ReplicateRemote:FireServer(tar.Character:FindFirstChild("HumanoidRootPart").Position)            
             end
         end
     end
@@ -290,9 +233,9 @@ end)
 window:Button("Fire All Spiked Traps",function()
 game.StarterGui:SetCore("SendNotification", {
     Title = "Active Bind";
-    Text = "KeypadFour (4)";
+    Text = "KeypadTwo (2)";
     Icon = "http://www.roblox.com/asset/?id=12790890422";
-    Duration = "DURATION IN SECONDS";
+    Duration = 5;
     callback = bindableFunction;
 })
 game:GetService("UserInputService").InputBegan:Connect(function(Input, IsTyping)
@@ -324,9 +267,9 @@ end
 
 game.StarterGui:SetCore("SendNotification", {
     Title = "GUI";
-    Text = "Cargado con exito, bienvenido a la version mejorada!";
+    Text = "Recently added god mode 10% more faster to enable!";
     Icon = "http://www.roblox.com/asset/?id=12790890422";
-    Duration = 2;
+    Duration = 5;
     callback = bindableFunction;
 })
 
@@ -614,7 +557,7 @@ end)
 end)
 
 local Pressing = false
-window:Toggle("Autopress Kill Key (-)",{location = Table, flag = "enable"},function()
+window:Toggle("Start/Stop Looping",{location = Table, flag = "enable"},function()
     if Pressing then
         Pressing = false
     else
@@ -630,7 +573,7 @@ end)
 
 
 local FastKilling = false
-window:Toggle("Target All (Void)",{location = Table, flag = "enable"},function()
+window:Toggle("Kill Everyone",{location = Table, flag = "enable"},function()
 		for i,v in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
 			if v.Name == "Kawaii Revolver" then
 			    v:Destroy()
@@ -642,10 +585,7 @@ window:Toggle("Target All (Void)",{location = Table, flag = "enable"},function()
     else
         FastKilling = true
         repeat
-            wait(.1)
-     game:GetService("VirtualInputManager"):SendKeyEvent(true,Enum.KeyCode.One,false,game)      
-     wait(.1)
-
+     wait()
             for i,v in pairs(Player.Backpack:GetChildren()) do
                 if v:FindFirstChild("DamageRemote") then
                     GetChar().Humanoid:EquipTool(v)
@@ -684,39 +624,15 @@ end)
 
 
 
-window:Button("Quick God",function()
+window:Button("God Mode (Void)",function()
 game:GetService("Players").LocalPlayer.Character.PickupRemote:FireServer()
 wait()
 game.Players.LocalPlayer.Character["Torso"]:Destroy()
-wait(.1)
+wait()
 game.Players.LocalPlayer.Character["Humanoid"]:Destroy()
 end)
 
-window:Button("AntiVoid Pencil",function()
-Workspace.HelloJesus009.Pencil:FindFirstChild("Blade"):Destroy()
-wait()
-Workspace.HelloJesus009.Pencil:FindFirstChild("Handle"):Destroy()
-wait()
-Workspace.HelloJesus009Pencil:FindFirstChild("Meshes/wooden pencil_Cylinder.002"):Destroy()
-wait() 
-Workspace.HelloJesus009.Pencil:FindFirstChild("Meshes/wooden pencil_Cylinder.003"):Destroy() 
-wait() 
-Workspace.HelloJesus009.Pencil:FindFirstChild("Meshes/wooden pencil_Cylinder.004"):Destroy()
-end)
-
-window:Button("AntiVoid Pencil para mi bryana",function()
-Workspace.ENELM11.Pencil:FindFirstChild("Blade"):Destroy()
-wait()
-Workspace.ENELM11.Pencil:FindFirstChild("Handle"):Destroy()
-wait()
-Workspace.ENELM11.Pencil:FindFirstChild("Meshes/wooden pencil_Cylinder.002"):Destroy()
-wait() 
-Workspace.ENELM11.Pencil:FindFirstChild("Meshes/wooden pencil_Cylinder.003"):Destroy() 
-wait() 
-Workspace.ENELM11.Pencil:FindFirstChild("Meshes/wooden pencil_Cylinder.004"):Destroy()
-end)
-
-window:Button("Pencil Tp (Click)",function()
+window:Button("Pencil T.P (Click)",function()
 local UIS = game:GetService("UserInputService")
 
 local Player = game.Players.LocalPlayer
@@ -724,7 +640,7 @@ local Mouse = Player:GetMouse()
 
 
 function GetCharacter()
-   return Workspace.Elekt0r.Pencil
+   return Workspace.HelloJesus009.Pencil
 end
 
 function Teleport(pos)
@@ -742,17 +658,39 @@ UIS.InputBegan:Connect(function(input)
 end)
 end)
 
+window:Button("AntiVoid Pencil (T9nnk)",function()
+Workspace.T9nnk.Pencil:FindFirstChild("Blade"):Destroy()
+wait()
+Workspace.T9nnk.Pencil:FindFirstChild("Handle"):Destroy()
+wait()
+Workspace.T9nnk.Pencil:FindFirstChild("Meshes/wooden pencil_Cylinder.002"):Destroy()
+wait() 
+Workspace.T9nnk.Pencil:FindFirstChild("Meshes/wooden pencil_Cylinder.003"):Destroy() 
+wait() 
+Workspace.T9nnk.Pencil:FindFirstChild("Meshes/wooden pencil_Cylinder.004"):Destroy()
+end)
+
+window:Button("AntiVoid Pencil (ENELM11)",function()
+Workspace.ENELM11.Pencil:FindFirstChild("Blade"):Destroy()
+wait()
+Workspace.ENELM11.Pencil:FindFirstChild("Handle"):Destroy()
+wait()
+Workspace.ENELM11.Pencil:FindFirstChild("Meshes/wooden pencil_Cylinder.002"):Destroy()
+wait() 
+Workspace.ENELM11.Pencil:FindFirstChild("Meshes/wooden pencil_Cylinder.003"):Destroy() 
+wait() 
+Workspace.ENELM11.Pencil:FindFirstChild("Meshes/wooden pencil_Cylinder.004"):Destroy()
+end)
+
 --a
 
 local Mouse = game.Players.LocalPlayer:GetMouse()
 game:GetService("UserInputService").InputBegan:Connect(function(Input, IsTyping)
 if IsTyping then return end
 if Input.KeyCode == Enum.KeyCode.F1 then
-game.Players.LocalPlayer.Health = 0
+game.Workspace.HelloJesus009.Humanoid.Health = 0
 end
 end)
-
---Reset F1
 
 --Disable AutoJump
 
@@ -768,5 +706,3 @@ if Input.KeyCode == Enum.KeyCode.Q then
 game:GetService("VirtualInputManager"):SendKeyEvent(true,Enum.KeyCode.Backspace,false,game)
 end
 end)
-
---
