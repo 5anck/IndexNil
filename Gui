@@ -17,6 +17,7 @@
     local Usp = game:GetService("UserInputService")
     local visible = true
     local Usable = true
+    local speed = 10
     if _G.HideKeybind == nil then
         _G.HideKeybind = Enum.KeyCode.F6
     end
@@ -75,6 +76,7 @@
 
         glow.Name = "glow"
         glow.Parent = Main
+    	for i = 0,1,0.001*speed do
         glow.BackgroundColor3 = Color3.fromRGB(0, 0, 255)
         glow.BackgroundTransparency = 900
         glow.BorderSizePixel = 1
@@ -84,6 +86,19 @@
         glow.ImageColor3 = Color3.fromRGB(0, 0, 255)
         glow.ScaleType = Enum.ScaleType.Slice
         glow.SliceCenter = Rect.new(20, 20, 280, 280)
+
+        glow_2.Name = "glow"
+        glow_2.Parent = Title
+    	for i = 0,1,0.001*speed do
+        glow_2.BackgroundColor3 = Color3.fromRGB(0, 0, 255)
+        glow_2.BackgroundTransparency = 900
+        glow_2.BorderSizePixel = 1
+        glow_2.Position = UDim2.new(0, -15, 0, -15)
+        glow_2.Size = UDim2.new(1, 30, 1, 30)
+        glow_2.Image = "rbxassetid://4996891970"
+        glow_2.ImageColor3 = Color3.fromRGB(0, 0, 255)
+        glow_2.ScaleType = Enum.ScaleType.Slice
+        glow_2.SliceCenter = Rect.new(20, 20, 280, 280)
 
         buttonHolder.Name = "buttonHolder"
         buttonHolder.Parent = Main
@@ -144,18 +159,6 @@
         Minimize.TextSize = 12.000
         Minimize.TextStrokeColor3 = Color3.fromRGB(255, 255, 255)
         Minimize.TextStrokeTransparency = 0.920
-
-        glow_2.Name = "glow"
-        glow_2.Parent = Title
-        glow_2.BackgroundColor3 = Color3.fromRGB(0, 0, 255)
-        glow_2.BackgroundTransparency = 900
-        glow_2.BorderSizePixel = 1
-        glow_2.Position = UDim2.new(0, -15, 0, -15)
-        glow_2.Size = UDim2.new(1, 30, 1, 30)
-        glow_2.Image = "rbxassetid://4996891970"
-        glow_2.ImageColor3 = Color3.fromRGB(0, 0, 255)
-        glow_2.ScaleType = Enum.ScaleType.Slice
-        glow_2.SliceCenter = Rect.new(20, 20, 280, 280)
 
         local CurrentSize = 25
         local Invis = {}
