@@ -208,8 +208,8 @@ plr:GetMouse().KeyDown:Connect(function(key)
                 v.ReplicateRemote:FireServer(tar.Character:FindFirstChild("HumanoidRootPart").Position)            
             end
         end
-    end
-end)
+end
+    end)
 end)
 
 
@@ -217,7 +217,7 @@ window:Dropdown("Dropdown",{location = Table,flag = "weapon",search = false --[[
 local Mouse = game.Players.LocalPlayer:GetMouse()
 game:GetService("UserInputService").InputBegan:Connect(function(Input, IsTyping)
 if IsTyping then return end
-if Input.KeyCode == Enum.KeyCode.Z then
+if Input.KeyCode == Enum.KeyCode.Z or Enum.KeyCode.F then
 while true do wait()
 local Player = game:GetService("Players").LocalPlayer
 local Mouse = Player:GetMouse()
@@ -226,28 +226,6 @@ local Mouse = Player:GetMouse()
 	game:GetService("Players").LocalPlayer.PlayerGui:FindFirstChild("Menu Screen").Enabled = false
     Player.PlayerGui["Menu Screen"].RemoteEvent:FireServer(Table["weapon"])
 wait(1) end
-end
-end)
-end)
-
-window:Button("Fire All Spiked Traps",function()
-game.StarterGui:SetCore("SendNotification", {
-    Title = "Active Bind";
-    Text = "KeypadTwo (2)";
-    Icon = "http://www.roblox.com/asset/?id=12790890422";
-    Duration = 5;
-    callback = bindableFunction;
-})
-game:GetService("UserInputService").InputBegan:Connect(function(Input, IsTyping)
-if IsTyping then return end
-if Input.KeyCode == Enum.KeyCode.KeypadTwo then	
-	for _,v in pairs(workspace:GetDescendants()) do
-		if v:IsA("TouchTransmitter") then
-			firetouchinterest(game.Players.LocalPlayer.Character.HumanoidRootPart, v.Parent, -0) --0 is touch
-			task.wait(.01)
-			firetouchinterest(game.Players.LocalPlayer.Character.HumanoidRootPart, v.Parent, 1) -- 1 is untouch
-		end
-	end
 end
 end)
 end)
@@ -572,57 +550,37 @@ game:GetService("VirtualInputManager"):SendKeyEvent(true,Enum.KeyCode.KeypadMinu
 end)
 
 
-local FastKilling = false
+local KillingNear = false
 window:Toggle("Kill Everyone",{location = Table, flag = "enable"},function()
-		for i,v in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
-			if v.Name == "Kawaii Revolver" then
-			    v:Destroy()
-			end
-		end
-	    
-    if FastKilling then
-        FastKilling = false
+    if KillingNear then
+        KillingNear = false
     else
-        FastKilling = true
+        KillingNear = true
         repeat
-     wait()
-            for i,v in pairs(Player.Backpack:GetChildren()) do
-                if v:FindFirstChild("DamageRemote") then
-                    GetChar().Humanoid:EquipTool(v)
-                    
-                    wait()
-                    
-                    local targ
-                    for i,v in pairs(workspace:GetChildren()) do
-                            local vhum = v:FindFirstChild("Humanoid")
-                            local vroot = v:FindFirstChild("HumanoidRootPart")
-                            if vhum and vroot then
-                                if vhum.Health>0 and not v:FindFirstChild("ForceField") then
-                                    targ = vhum
-                                    range = dist
-                                end
-                           end
-                    end
-
-                    for i=1,2 do
-                        game:GetService("RunService").Heartbeat:Wait()
-                    end
-                    
-                    if targ then
-                        v.DamageRemote:FireServer(targ)
-                    end
-                    
-                    if not FastKilling then
-                        break
+            local targ
+            local range = 10000
+            for i,v in pairs(workspace:GetChildren()) do
+                if v~=GetChar() then
+                    local vhum = v:FindFirstChild("Humanoid")
+                    local vroot = v:FindFirstChild("HumanoidRootPart")
+                    if vhum and vroot then
+                        local dist = (vroot.Position - Player.Character.HumanoidRootPart.Position).magnitude
+                        if vhum.Health>0 and not v:FindFirstChild("ForceField") and dist <= range then
+                            targ = vhum
+                            range = dist
+                        end
                     end
                 end
             end
+            
+            if targ then
+                local tool = GetChar():FindFirstChildOfClass("Tool")
+                tool.DamageRemote:FireServer(targ)
+            end
             wait()
-        until not FastKilling
+        until not KillingNear
     end
 end)
-
-
 
 window:Button("God Mode (Void)",function()
 game:GetService("Players").LocalPlayer.Character.PickupRemote:FireServer()
