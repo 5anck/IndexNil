@@ -17,7 +17,6 @@
     local Usp = game:GetService("UserInputService")
     local visible = true
     local Usable = true
-    local speed = 10
     if _G.HideKeybind == nil then
         _G.HideKeybind = Enum.KeyCode.F6
     end
@@ -74,10 +73,11 @@
         Main.Position = UDim2.new(0, #ScreenGui:GetChildren() * 170 - 155, 0, 15)
         Main.Size = UDim2.new(0, 150, 0, 25)
 
+        local speed = 10
         glow.Name = "glow"
         glow.Parent = Main
     	for i = 0,1,0.001*speed do
-        glow.BackgroundColor3 = Color3.fromRGB(0, 0, 255)
+        glow.BackgroundColor3 = Color3.fromRGB(0,1,0.001*speed)
         glow.BackgroundTransparency = 900
         glow.BorderSizePixel = 1
         glow.Position = UDim2.new(0, -15, 0, -15)
@@ -88,10 +88,10 @@
         glow.SliceCenter = Rect.new(20, 20, 280, 280)
 end
 
+        local speed = 10
         glow_2.Name = "glow"
         glow_2.Parent = Title
-    	for i = 0,1,0.001*speed do
-        glow_2.BackgroundColor3 = Color3.fromRGB(0, 0, 255)
+        glow_2.BackgroundColor3 = Color3.fromRGB(0,1,0.001*speed)
         glow_2.BackgroundTransparency = 900
         glow_2.BorderSizePixel = 1
         glow_2.Position = UDim2.new(0, -15, 0, -15)
