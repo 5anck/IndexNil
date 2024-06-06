@@ -111,9 +111,9 @@ end
 local Lib = loadstring(game:HttpGet("https://raw.githubusercontent.com/5anck/IndexNil/main/Gui", true))()
 local Table = {}
 
-local window = Lib:CreateWindow("CHAOS 100%")
+local window = Lib:CreateWindow("CHAOS DEFINITELY")
 
-window:Section("Fun Functions")
+window:Section(" Fun Functions")
 --Fake delay
 plr:GetMouse().KeyDown:Connect(function(key)
     if key == 'r' then
@@ -158,7 +158,7 @@ AddCd(v,0.1)
     end
 end)
 
-window:Button("Hitlock v8",function()
+window:Button(" Hitlock v8",function()
 plr:GetMouse().KeyDown:Connect(function(key)
     if key == 'r' then
         tar = nil
@@ -204,7 +204,7 @@ plr:GetMouse().KeyDown:Connect(function(key)
                 AddCd(v,1)
                 rs.Stepped:wait()
                 plr.Character:FindFirstChildOfClass'Humanoid':LoadAnimation(v.Fire):Play()
-                Shoot(v.Barrel.Attachment.WorldPosition,tar.Character:FindFirstChild("Head").Position,v)
+                Shoot(v.Barrel.Attachment.WorldPosition,tar.Character:FindFirstChild("Right Leg").Position,v)
                 v.ReplicateRemote:FireServer(tar.Character:FindFirstChild("HumanoidRootPart").Position)            
             end
         end
@@ -230,11 +230,11 @@ end
 end)
 end)
 
-window:Button("Set Night",function()
+window:Button(" Set Night",function()
 game.Lighting:SetMinutesAfterMidnight(0)
     end)
 
-window:Button("Infinite Yield v5",function()
+window:Button(" Infinite Yield v5",function()
 loadstring(game:HttpGet(('https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/source'),true))()
 end)
 
@@ -243,13 +243,7 @@ local function GetChar()
     return Char
 end
 
-game.StarterGui:SetCore("SendNotification", {
-    Title = "GUI";
-    Text = "Recently added god mode 10% more faster to enable!";
-    Icon = "http://www.roblox.com/asset/?id=12790890422";
-    Duration = 5;
-    callback = bindableFunction;
-})
+--
 
 game:GetService("UserInputService").InputBegan:Connect(function(Input, IsTyping)
 if IsTyping then return end
@@ -442,12 +436,23 @@ Event:FireServer(A_1)
 end
 end)
 
+game.StarterGui:SetCore("SendNotification", {
+    Title = "Loading..";
+    Text = "Wait until load..";
+    Icon = "http://www.roblox.com/asset/?id=5585103223";
+    Duration = 2;
+    callback = bindableFunction;
+})
+
 window:Section("Target List")
 
+wait(.1)
+
 window:Dropdown("Select Target",{location = Table,flag = "player1",search = true --[[AddsSearchBar]], list = {"Mace","Chainsaw","Knife","Pan","Pencil","Baseball Bat","Scythe","Emerald Greatsword","Blood Dagger"} --[[Wont work when PlayerList = true]], PlayerList = true --[[ Turns the list into the players in the server ]]},function()game.StarterGui:SetCore("SendNotification", {
-    Text = "Was choosed. Now Click - To Kill!";
-    Icon = "http://www.roblox.com/asset/?id=12790890422";
-    Duration = "DURATION IN SECONDS";
+    Title = "Target:";
+    Text = "Choosed sucessfully!";
+    Icon = "http://www.roblox.com/asset/?id=5585103223";
+    Duration = 5;
     callback = bindableFunction;
 })
 game:GetService("UserInputService").InputBegan:Connect(function(Input, IsTyping)
@@ -465,12 +470,13 @@ end
 end)
 end)
 
-wait()
+wait(.1)
 
 window:Dropdown("Select Target",{location = Table,flag = "player2",search = true --[[AddsSearchBar]], list = {"Mace","Chainsaw","Knife","Pan","Pencil","Baseball Bat","Scythe","Emerald Greatsword","Blood Dagger"} --[[Wont work when PlayerList = true]], PlayerList = true --[[ Turns the list into the players in the server ]]},function()game.StarterGui:SetCore("SendNotification", {
-    Text = "Was choosed. Now Click - To Kill!";
-    Icon = "http://www.roblox.com/asset/?id=12790890422";
-    Duration = "DURATION IN SECONDS";
+    Title = "Target:";
+    Text = "Choosed sucessfully!";
+    Icon = "http://www.roblox.com/asset/?id=5585103223";
+    Duration = 5;
     callback = bindableFunction;
 })
 game:GetService("UserInputService").InputBegan:Connect(function(Input, IsTyping)
@@ -488,12 +494,13 @@ end
 end)
 end)
 
-wait()
+wait(.1)
 
 window:Dropdown("Select Target",{location = Table,flag = "player3",search = true --[[AddsSearchBar]], list = {"Mace","Chainsaw","Knife","Pan","Pencil","Baseball Bat","Scythe","Emerald Greatsword","Blood Dagger"} --[[Wont work when PlayerList = true]], PlayerList = true --[[ Turns the list into the players in the server ]]},function()game.StarterGui:SetCore("SendNotification", {
-    Text = "Was choosed. Now Click - To Kill!";
-    Icon = "http://www.roblox.com/asset/?id=12790890422";
-    Duration = "DURATION IN SECONDS";
+    Title = "Target:";
+    Text = "Choosed sucessfully!";
+    Icon = "http://www.roblox.com/asset/?id=5585103223";
+    Duration = 5;
     callback = bindableFunction;
 })
 game:GetService("UserInputService").InputBegan:Connect(function(Input, IsTyping)
@@ -511,12 +518,13 @@ end
 end)
 end)
 
-wait()
+wait(.1)
 
 window:Dropdown("Select Target",{location = Table,flag = "player4",search = true --[[AddsSearchBar]], list = {"Mace","Chainsaw","Knife","Pan","Pencil","Baseball Bat","Scythe","Emerald Greatsword","Blood Dagger"} --[[Wont work when PlayerList = true]], PlayerList = true --[[ Turns the list into the players in the server ]]},function()game.StarterGui:SetCore("SendNotification", {
-    Text = "Was choosed. Now Click - To Kill!";
-    Icon = "http://www.roblox.com/asset/?id=12790890422";
-    Duration = "DURATION IN SECONDS";
+    Title = "Target:";
+    Text = "Choosed sucessfully!";
+    Icon = "http://www.roblox.com/asset/?id=5585103223";
+    Duration = 5;
     callback = bindableFunction;
 })
 game:GetService("UserInputService").InputBegan:Connect(function(Input, IsTyping)
@@ -530,7 +538,31 @@ local A_4 = game:GetService("Workspace"):FindFirstChild(Table["player4"]).Humano
                wait()
 local A_4 = game:GetService("Players").LocalPlayer.Character:FindFirstChildOfClass("Tool").DamageRemote:FireServer(A_4) and not v:FindFirstChild("ForceField")
           until Target.Health <= 0
-end
+          end
+end)
+end)
+
+wait(.1)
+
+window:Dropdown("Select Target",{location = Table,flag = "player4",search = true --[[AddsSearchBar]], list = {"Mace","Chainsaw","Knife","Pan","Pencil","Baseball Bat","Scythe","Emerald Greatsword","Blood Dagger"} --[[Wont work when PlayerList = true]], PlayerList = true --[[ Turns the list into the players in the server ]]},function()game.StarterGui:SetCore("SendNotification", {
+    Title = "Target:";
+    Text = "Choosed sucessfully!";
+    Icon = "http://www.roblox.com/asset/?id=5585103223";
+    Duration = 5;
+    callback = bindableFunction;
+})
+game:GetService("UserInputService").InputBegan:Connect(function(Input, IsTyping)
+if IsTyping then return end
+if Input.KeyCode == Enum.KeyCode.KeypadMinus then
+wait()
+game:GetService("Players").LocalPlayer.Character:FindFirstChildOfClass("Tool").DamageRemote:FireServer(Table["player5"])
+local A_5 = game:GetService("Workspace"):FindFirstChild(Table["player5"]).Humanoid
+        local Target = A_5
+           repeat
+               wait()
+local A_5 = game:GetService("Players").LocalPlayer.Character:FindFirstChildOfClass("Tool").DamageRemote:FireServer(A_5) and not v:FindFirstChild("ForceField")
+          until Target.Health <= 0
+          end
 end)
 end)
 
@@ -664,3 +696,11 @@ if Input.KeyCode == Enum.KeyCode.Q then
 game:GetService("VirtualInputManager"):SendKeyEvent(true,Enum.KeyCode.Backspace,false,game)
 end
 end)
+
+game.StarterGui:SetCore("SendNotification", {
+    Title = "Loaded!";
+    Text = "GUI Loaded sucessfully!";
+    Icon = "http://www.roblox.com/asset/?id=5585095509";
+    Duration = 5;
+    callback = bindableFunction;
+})
