@@ -1,9 +1,15 @@
+-- Definir RemoteEvent
+local whitelistChangedEvent = Instance.new("RemoteEvent")
+whitelistChangedEvent.Name = "WhitelistChangedEvent"
+whitelistChangedEvent.Parent = game:GetService("ReplicatedStorage")
+
+-- Lista blanca de usuarios permitidos
 local whitelist = {
     "HelloJesus009",
-    "9mmxp",
     -- Agrega más nombres de usuario según sea necesario
 }
 
+-- Función para verificar si un usuario está en la lista blanca
 local function isUserInWhitelist(username)
     for _, name in ipairs(whitelist) do
         if name == username then
@@ -13,18 +19,38 @@ local function isUserInWhitelist(username)
     return false
 end
 
+-- Función para verificar y hacer kick al usuario si no está en la lista blanca
 local function checkAndKickPlayer(player)
     local username = player.Name
     if not isUserInWhitelist(username) then
-        player:Kick("¡No estás en la lista blanca!")
+        whitelistChangedEvent:FireClient(player, false) -- Enviar evento al cliente para expulsar al jugador
     end
 end
 
+-- Función principal que se ejecutará cada cierto tiempo para verificar los usuarios
 local function main()
+    -- Obtener todos los jugadores en el juego
     local players = game:GetService("Players"):GetPlayers()
+    
+    -- Verificar cada jugador
     for _, player in ipairs(players) do
         checkAndKickPlayer(player)
     end
 end
 
+-- Ejecutar la función principal inicialmente
 main()
+
+-- Definir el intervalo de tiempo para actualizar (en segundos)
+local updateTime = 60  -- por ejemplo, actualizar cada 60 segundos
+
+-- Función para ejecutar la función principal cada cierto intervalo de tiempo
+local function updateLoop()
+    while true do
+        wait(updateTime)
+        main()
+    end
+end
+
+-- Iniciar el bucle de actualización en un hilo aparte
+coroutine.wrap(updateLoop)()
