@@ -5,7 +5,6 @@ whitelistChangedEvent.Parent = game:GetService("ReplicatedStorage")
 
 -- Lista blanca de usuarios permitidos
 local whitelist = {
-    "HelloJesus009",
 
     -- Agrega más nombres de usuario según sea necesario
 }
